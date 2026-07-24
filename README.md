@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beekkumsaaf | AI Note Generator & PDFs</title>
+    <title>Beekkumsaaf | Note & PDF Center</title>
     <style>
         * {
             margin: 0;
@@ -167,20 +167,15 @@
                 <label for="subject">Gosa Barnootaa:</label>
                 <select id="subject" onchange="updateUnits()">
                     <option value="Hisaaba">Hisaaba (Mathematics)</option>
+                    <option value="Saayinsii Uumamaa">Saayinsii Uumamaa (General Science)</option>
+                    <option value="Saayinsii Hawaasaa">Saayinsii Hawaasaa (Social Studies)</option>
                 </select>
             </div>
 
             <div class="form-group">
                 <label for="unit">Yuunitii Filadhu:</label>
                 <select id="unit">
-                    <option value="Unit 1">Unit 1 - Rational Numbers</option>
-                    <option value="Unit 2">Unit 2 - Squares, Square Roots, Cubes and Cube Roots</option>
-                    <option value="Unit 3">Unit 3 - Linear Equations and Inequalities</option>
-                    <option value="Unit 4">Unit 4 - Similar Figures</option>
-                    <option value="Unit 5">Unit 5 - Theorems on Similarity of Triangles</option>
-                    <option value="Unit 6">Unit 6 - Lines and Angles in a Circle</option>
-                    <option value="Unit 7">Unit 7 - Solid Figures</option>
-                    <option value="Unit 8">Unit 8 - Introduction to Probability</option>
+                    <!-- Yuunitoonni ofumaan JavaScript dhaan asitti guutamu -->
                 </select>
             </div>
 
@@ -214,68 +209,128 @@
     </main>
 
     <script>
-        const mathUnits = {
-            "Unit 1": {
-                title: "Unit 1: Rational Numbers",
-                summary: "Lakkoofsotni Rational Numbers kanneen bifa $\\frac{a}{b}$ tiin barreeffamuu danda'aniidha (bakka $b \\neq 0$ ta'etti).",
-                terms: ["Rational Number: Lakkoofsa bifa $\\frac{a}{b}$ tiin kaa'amu.", "Terminating Decimal: Lakkoofsa desimaala dhiheessa xumura qabu.", "Repeating Decimal: Desimaala irra deebi'amu."],
-                quiz: "Lakkoofsi $0.75$ jedhu bifa frākshiiniin ($\\frac{a}{b}$) yoo barreeffamu meeqa ta'a? (Deebii: $\\frac{3}{4}$).",
-                pdf: "https://github.com/user-attachments/files/30328326/Unit.1.-.Rational.Numbers.pdf"
+        const database = {
+            "Hisaaba": {
+                "Unit 1": {
+                    title: "Unit 1: Rational Numbers",
+                    summary: "Lakkoofsotni Rational Numbers kanneen bifa a/b tiin barreeffamuu danda'aniidha (bakka b fi 0 wal hin qixxoonne).",
+                    terms: ["Rational Number: Lakkoofsa bifa a/b tiin kaa'amu.", "Terminating Decimal: Lakkoofsa desimaala dhiheessa xumura qabu."],
+                    quiz: "Lakkoofsi 0.75 jedhu bifa frākshiiniin yoo barreeffamu meeqa ta'a? (Deebii: 3/4).",
+                    pdf: "https://github.com/user-attachments/files/30328326/Unit.1.-.Rational.Numbers.pdf"
+                },
+                "Unit 2": {
+                    title: "Unit 2: Squares, Square Roots, Cubes and Cube Roots",
+                    summary: "Iskawerii fi kiyyoowwan lakkoofsotaa, akkasumas iskaawer ruutii fi kiyoob ruutii shallaguu baranna.",
+                    terms: ["Square: Lakkoofsa isumaan baay'isuu.", "Square Root: Hundee lakkoofsa iskaaweriin kennamee barbaaduu."],
+                    quiz: "Gatiin Square root 144 fi Cube root 27 meeqatami? (Deebii: 12 fi 3).",
+                    pdf: "https://github.com/user-attachments/files/30328203/Unit.2.-.Squares.Square.Roots.Cubes.and.Cube.Roots.pdf"
+                },
+                "Unit 3": {
+                    title: "Unit 3: Linear Equations and Inequalities",
+                    summary: "Sariitii sammanyaa sararaawaa fi Inequlaalitiiwwan (<, >, <=, >=) furuu.",
+                    terms: ["Linear Equation: Sararaawaa gatii sarara diriiraa kennu.", "Inequality: Wal-qixxummaa kan hin qabne."],
+                    quiz: "Yoo 3x - 5 = 10 ta'e, gatiin x meeqa ta'a? (Deebii: x = 5).",
+                    pdf: "https://github.com/user-attachments/files/30328201/Unit.3.-.Linear.Equations.and.Inequalities.pdf"
+                },
+                "Unit 4": {
+                    title: "Unit 4: Similar Figures",
+                    summary: "Bifa wal-fakkaatan (Similar Figures) kanneen fakkii walfakkaataa qaban garuu guddinaan garaagar ta'uu danda'an qorachuu.",
+                    terms: ["Similarity: Bifa wal-fakkaatu garuu hamma addaa.", "Ratio: Reeshoo cinaachota wal-gitiinsaa."],
+                    quiz: "Bifoonni wal-fakkaatan kantiilolee wal-gita ta'an qabu? (Deebii: Eeyyee).",
+                    pdf: "https://github.com/user-attachments/files/30328202/Unit.4.-.Similar.Figures.pdf"
+                },
+                "Unit 5": {
+                    title: "Unit 5: Theorems on Similarity of Triangles",
+                    summary: "Tiyooreemota wal-fakkii Sarseenaa (Triangles) kanneen akka AAA, SSS, fi SAS qorachuu.",
+                    terms: ["AAA Postulate: Angle-Angle-Angle", "SAS Postulate: Side-Angle-Side"],
+                    quiz: "Kantiiloonni 3n sarseenaa lamaanii wal-qixxeennaan, tiyooreema kam fayyadamna? (Deebii: AAA).",
+                    pdf: "https://github.com/user-attachments/files/30328206/Unit.5.-.Theorems.on.Similarity.of.Triangles.pdf"
+                },
+                "Unit 6": {
+                    title: "Unit 6: Lines and Angles in a Circle",
+                    summary: "Sararoota fi kantiilota geengoo (Circle) keessatti uumaman, kanneen akka Tangent, Secant, fi Radius qorachuu.",
+                    terms: ["Radius: Sarara wiirtuu irraa gara sarara geengoo.", "Tangent: Sarara geengoo tuqee darbu."],
+                    quiz: "Sararri geengoo qabxii tokko qofa irratti tuqu maal jedhama? (Deebii: Tangent).",
+                    pdf: "https://github.com/user-attachments/files/30328204/Unit.6.-.Lines.and.Angles.in.a.Circle.pdf"
+                },
+                "Unit 7": {
+                    title: "Unit 7: Solid Figures",
+                    summary: "Bifoota Jajjaboo (3D Figures) kanneen akka Prism, Cylinder, Cone, fi Sphere bal'ina dachee fi qabeenya (Volume) isaanii calculate gochuu.",
+                    terms: ["Volume: Qabeenya bifa 3D keessa jiru.", "Surface Area: Bal'ina alaa."],
+                    quiz: "Formulaan Volume silindarii maali? (Deebii: V = pi * r^2 * h).",
+                    pdf: "https://github.com/user-attachments/files/30328205/Unit.7.-.Solid.Figures.pdf"
+                },
+                "Unit 8": {
+                    title: "Unit 8: Introduction to Probability",
+                    summary: "Carraa (Probability) ta'iinsa tokkoo shallaguu.",
+                    terms: ["Sample Space: Iddoo guutuu ta'iinsaa.", "Event: Ta'iinsa murtaa'aa."],
+                    quiz: "Yoo Saantima ol darbannu, carraan fuulli 'Head' dhufuu meeqatami? (Deebii: 1/2 ykn 50%).",
+                    pdf: "https://github.com/user-attachments/files/30328207/Unit.8.-.Introduction.to.Probability.pdf"
+                }
             },
-            "Unit 2": {
-                title: "Unit 2: Squares, Square Roots, Cubes and Cube Roots",
-                summary: "Iskawerii ($x^2$) fi kiyyoowwan lakkoofsotaa ($x^3$), akkasumas iskaawer ruutii ($\\sqrt{x}$) fi kiyoob ruutii ($\\sqrt[3]{x}$) shallaguu baranna.",
-                terms: ["Square: Lakkoofsa isumaan baay'isuu ($x \\times x$).", "Square Root: Lakkoofsa iskuweeriin isa erga kennamee booda hundee barbaaduu."],
-                quiz: "Gatiin $\\sqrt{144}$ fi $\\sqrt[3]{27}$ meeqatami? (Deebii: $12$ fi $3$).",
-                pdf: "https://github.com/user-attachments/files/30328203/Unit.2.-.Squares.Square.Roots.Cubes.and.Cube.Roots.pdf"
+            "Saayinsii Uumamaa": {
+                "Unit 1": {
+                    title: "Unit 1: Classification of Organisms (Qoodinsa Lubbu-qabeeyyii)",
+                    summary: "Lubbu-qabeeyyii naannoo keenyatti argaman bakka gurguddoo shaniitti qooduu (Kingdoms: Monera, Protista, Fungi, Plantae, Animalia).",
+                    terms: ["Taxonomy: Saayinsii ramaddii lubbu-qabeeyyii.", "Species: Sadarkaa dhumaa ramaddii sanyii."],
+                    quiz: "Biqiltoonni (Plantae) nyaata isaanii akkamitti qopheessatu? (Deebii: Photosynthesis dhaan).",
+                    pdf: "#" 
+                },
+                "Unit 2": {
+                    title: "Unit 2: Cell Biology (Sella fi Caasaa Isaa)",
+                    summary: "Selliin bu'uura caasaa fi dalagaa lubbu-qabeeyyii ti. Garaagarummaa Sella biqiltuu fi binensaa qorachuu.",
+                    terms: ["Cell Wall: Kellaa alaa sella biqiltuu qofarratti argamu.", "Nucleus: Wiirtuu dalagaa sellaa to'atu."],
+                    quiz: "Qaamni sellaa 'Powerhouse of the cell' (Maddi anniisaa) jedhamu maali? (Deebii: Mitochondria).",
+                    pdf: "#"
+                },
+                "Unit 3": {
+                    title: "Unit 3: Human Anatomy fi Fayyaa",
+                    summary: "Sirna daakka nyaataa, sirna hargansuu fi haala qulqullina qaamaa eeggachuu.",
+                    terms: ["Digestion: Adeemsa nyaata bulleessuu.", "Respiration: Sirna oksijiinii fudhachuu fi kaarbon daayoogzaayidii baasuu."],
+                    quiz: "Nyaanni calqaba sirna daakkaa keessatti eessatti bullaa'a? (Deebii: Afaan keessatti).",
+                    pdf: "#"
+                }
             },
-            "Unit 3": {
-                title: "Unit 3: Linear Equations and Inequalities",
-                summary: "Sariitii sammanyaa sararaawaa fi Inequlaalitiiwwan ($<$, $>$, $\\leq$, $\\geq$) furuu.",
-                terms: ["Linear Equation: Sararaawaa gatii sarara diriiraa kennu.", "Inequality: Wal-qixxummaa kan hin qabne ($>$ ykn $<$)."],
-                quiz: "Yoo $3x - 5 = 10$ ta'e, gatiin $x$ meeqa ta'a? (Deebii: $x = 5$).",
-                pdf: "https://github.com/user-attachments/files/30328201/Unit.3.-.Linear.Equations.and.Inequalities.pdf"
-            },
-            "Unit 4": {
-                title: "Unit 4: Similar Figures",
-                summary: "Muka fi bifa wal-fakkaatan (Similar Figures) kanneen fakkii walfakkaataa qaban garuu guddinaan garaagar ta'uu danda'an qorachuu.",
-                terms: ["Similarity: Bifa wal-fakkaatu garuu hamma addaa.", "Ratio: Reeshoo cinaachota wal-gitiinsaa."],
-                quiz: "Bifoonni wal-fakkaatan kantiilolee (angles) wal-gita ta'an qabu? (Deebii: Eeyyee).",
-                pdf: "https://github.com/user-attachments/files/30328202/Unit.4.-.Similar.Figures.pdf"
-            },
-            "Unit 5": {
-                title: "Unit 5: Theorems on Similarity of Triangles",
-                summary: "Tiyooreemota wal-fakkii Sarseenaa (Triangles) kanneen akka AAA, SSS, fi SAS qorachuu.",
-                terms: ["AAA Postulate: Angle-Angle-Angle", "SAS Postulate: Side-Angle-Side"],
-                quiz: "Kantiiloonni 3n sarseenaa lamaanii wal-qixxeennaan, tiyooreema kam fayyadamna? (Deebii: AAA).",
-                pdf: "https://github.com/user-attachments/files/30328206/Unit.5.-.Theorems.on.Similarity.of.Triangles.pdf"
-            },
-            "Unit 6": {
-                title: "Unit 6: Lines and Angles in a Circle",
-                summary: "Sararoota fi kantiilota geengoo (Circle) keessatti uumaman, kanneen akka Tangent, Secant, fi Radius qorachuu.",
-                terms: ["Radius: Sarara wiirtuu irraa gara sarara geengoo.", "Tangent: Sarara geengoo tuqee darbu."],
-                quiz: "Sararri geengoo qabxii tokko qofa irratti tuqu maal jedhama? (Deebii: Tangent).",
-                pdf: "https://github.com/user-attachments/files/30328204/Unit.6.-.Lines.and.Angles.in.a.Circle.pdf"
-            },
-            "Unit 7": {
-                title: "Unit 7: Solid Figures",
-                summary: "Bifoota Jajjaboo (3D Figures) kanneen akka Prism, Cylinder, Cone, fi Sphere bal'ina dachee fi qabeenya (Volume) isaanii calculate gochuu.",
-                terms: ["Volume: Qabeenya bifa 3D keessa jiru.", "Surface Area: Bal'ina alaa."],
-                quiz: "Formulaan Volume silindarii maali? (Deebii: $V = \\pi r^2 h$).",
-                pdf: "https://github.com/user-attachments/files/30328205/Unit.7.-.Solid.Figures.pdf"
-            },
-            "Unit 8": {
-                title: "Unit 8: Introduction to Probability",
-                summary: "Carraa (Probability) ta'iinsa tokkoo shallaguu: $P(E) = \\frac{\\text{Carraa Ta'iinsaa}}{\\text{Guutummaa Ta'iinsaa}}$.",
-                terms: ["Sample Space: Iddoo guutuu ta'iinsaa.", "Event: Ta'iinsa murtaa'aa."],
-                quiz: "Yoo Saantima ol darbannu, carraan fuulli 'Head' dhufuu meeqatami? (Deebii: $\\frac{1}{2}$ ykn $50\\%$).",
-                pdf: "https://github.com/user-attachments/files/30328207/Unit.8.-.Introduction.to.Probability.pdf"
+            "Saayinsii Hawaasaa": {
+                "Unit 1": {
+                    title: "Unit 1: Teessuma Lafaa fi Haala Qilleensaa",
+                    summary: "Kaartaa dubbisuu, sararoota latitude fi longitude, fi haala qilleensa Itoophiyaa fi Afrikaa.",
+                    terms: ["Latitude: Sarara kiiloolee diriiraa.", "Equator: Sarara lafa bakka walqixa lamatti hiruu."],
+                    quiz: "Gaarrri hawwata fi dheeraan Itoophiyaa keessatti argamu maali? (Deebii: Gaara Raseen/Ras Dashen).",
+                    pdf: "#"
+                },
+                "Unit 2": {
+                    title: "Unit 2: Seenaa fi Hawaasummaa",
+                    summary: "Seenaa dhala namaa, qaroomina durii fi haala guddina hawaasummaa Oromoo fi saboota biroo.",
+                    terms: ["History: Galmee fi qo'annoo darbiinsa seenaa dhala namaa.", "Sirna Gadaa: Sirna bulchiinsa dimookiraatawaa Oromoo."],
+                    quiz: "Qaroominni durii guddichi laga Abbayyaa irratti hundeeffame maali? (Deebii: Qaroomina Gibtsii/Egypt).",
+                    pdf: "#"
+                }
             }
         };
 
+        // Yeroo gosti barnootaa jijjiiramu yuunitoota haaraa fiduu
+        function updateUnits() {
+            const subject = document.getElementById('subject').value;
+            const unitSelect = document.getElementById('unit');
+            unitSelect.innerHTML = "";
+            
+            const units = database[subject];
+            for (let key in units) {
+                const option = document.createElement('option');
+                option.value = key;
+                option.innerText = units[key].title;
+                unitSelect.appendChild(option);
+            }
+        }
+
+        // Yeroo jalqaba fuulli banamu yuunitoota Hisaabaa fe'uu
+        updateUnits();
+
         function generateNotes() {
+            const subject = document.getElementById('subject').value;
             const selectedUnit = document.getElementById('unit').value;
-            const data = mathUnits[selectedUnit];
+            const data = database[subject][selectedUnit];
 
             if (data) {
                 document.getElementById('noteTitle').innerText = data.title;
