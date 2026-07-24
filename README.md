@@ -241,4 +241,11 @@
         }
     </script>
 </body>
-</html>
+</html>[Unit 1 - Rational Numbers.pdf](https://github.com/user-attachments/files/30328326/Unit.1.-.Rational.Numbers.pdf)
+[Unit 2 - Squares, Square Roots, Cubes and Cube Roots.pdf](https://github.com/user-attachments/files/30328203/Unit.2.-.Squares.Square.Roots.Cubes.and.Cube.Roots.pdf)
+[Unit 3 - Linear Equations and Inequalities.pdf](https://github.com/user-attachments/files/30328201/Unit.3.-.Linear.Equations.and.Inequalities.pdf)
+[Unit 4 - Similar Figures.pdf](https://github.com/user-attachments/files/30328202/Unit.4.-.Similar.Figures.pdf)
+[Unit 5 - Theorems on Similarity of Triangles.pdf](https://github.com/user-attachments/files/30328206/Unit.5.-.Theorems.on.Similarity.of.Triangles.pdf)
+[Unit 6 - Lines and Angles in a Circle.pdf](https://github.com/user-attachments/files/30328204/Unit.6.-.Lines.and.Angles.in.a.Circle.pdf)
+[Unit 7 - Solid Figures.pdf](https://github.com/user-attachments/files/30328205/Unit.7.-.Solid.Figures.pdf)
+[Unit 8 - Introduction to Probability.pdf](https://github.com/user-attachments/files/30328207/Unit.8.-.Introduction.to.Probability.pdf)
